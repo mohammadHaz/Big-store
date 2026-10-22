@@ -1,0 +1,109 @@
+/* الـ root بيحجز مكان ثابت بالصفحة، فالتمدد ما بيدفش العناصر اللي حدّه */
+.root {
+  @apply relative w-full text-sm text-base ;
+  height: 2.5rem;
+   margin-inline: 40px;
+}
+
+/* الصندوق الفعلي: متوسّط، فلما يكبر العرض بيتمدد من الجهتين */
+.panel {
+  @apply absolute top-0 bg-accent-0 border border-accent-2 overflow-hidden;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 50;
+    background: rgba(255, 255, 255, 0.9);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* border radius */
+  border-radius: 20px; /* شكل كبسولة وهو مسكّر */
+
+  transition:
+    width 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 350ms ease;
+}
+
+.open .panel {
+  width: min(calc(100% + 160px), calc(100vw - 2rem));
+box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);}
+
+.inputRow {
+  @apply relative;
+}
+
+.input {
+  @apply bg-transparent px-4 py-2 appearance-none w-full pr-10 outline-none;
+  height: 2.5rem;
+}
+
+.input::placeholder {
+  @apply text-accent-3;
+}
+
+.iconContainer {
+  @apply absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none;
+}
+
+.icon {
+  @apply h-5 w-5;
+}
+
+/* نزول الاقتراحات بسلاسة (0fr → 1fr بيعمل animation للارتفاع الحقيقي) */
+.dropdown {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms ease;
+}
+
+.open .dropdown {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.dropdownInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.list {
+  @apply border-t border-accent-2 py-1 ;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+
+}
+
+.item {
+  @apply flex items-center gap-3 px-4 py-2 cursor-pointer text-accent-7 transition-colors duration-150;
+}
+
+.item:hover,
+.itemActive {
+  @apply bg-accent-1 text-accent-9;
+}
+
+.itemIcon {
+  @apply h-4 w-4 text-accent-4 flex-shrink-0;
+}
+
+.empty {
+  @apply px-4 py-3 text-accent-4;
+}
+
+@screen sm {
+  .root  {
+    margin-left: 70px;
+    margin-right: 70px;
+  }
+
+}
+
+
+

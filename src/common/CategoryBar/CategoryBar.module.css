@@ -1,0 +1,59 @@
+.root {
+  @apply w-full  px-4 py-3;
+  border-radius: 0 0 28px 28px;
+}
+
+.list {
+  @apply flex items-center gap-8 overflow-x-auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.list::-webkit-scrollbar {
+  display: none;
+}
+
+.list > li {
+  @apply flex-shrink-0;
+  scroll-snap-align: start;
+}
+
+.item {
+  @apply flex items-center gap-2 text-sm font-bold text-accent-9 transition-opacity duration-150;
+}
+
+.item:hover {
+  opacity: 0.75;
+}
+
+.thumb {
+  @apply relative block w-8 h-8 rounded-full overflow-hidden flex-shrink-0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.label {
+  @apply whitespace-nowrap;
+}
+
+.allLink {
+  @apply flex items-center justify-center w-10 h-10 text-accent-3 transition-colors duration-150;
+}
+
+.allLink:hover {
+  @apply text-accent-6;
+}
+
+.gridIcon {
+  @apply w-6 h-6;
+}
+
+/* ع الشاشات الكبيرة بيصيروا بالنص */
+@screen md {
+  .list {
+    @apply justify-center gap-4;
+  }
+}

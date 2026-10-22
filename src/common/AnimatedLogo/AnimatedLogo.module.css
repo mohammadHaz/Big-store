@@ -1,0 +1,119 @@
+.root {
+  --logo-color: #e3262f;
+  display: block;
+  flex-shrink: 0;
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* كل الأجزاء بتلف حوالين نص اللوغو */
+.part {
+  transform-box: view-box;
+  transform-origin: 100px 100px;
+}
+
+/* ===== الأشكال ===== */
+.back {
+  fill: var(--logo-color);
+  opacity: 0.35;
+  animation: spin 30s linear infinite reverse;
+  animation-play-state: paused;
+}
+
+.ringOutline {
+  fill: none;
+  stroke: var(--logo-color);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 10 9;
+  animation: spin 22s linear infinite reverse;
+  animation-play-state: paused;
+}
+
+.ringCircle {
+  fill: none;
+  stroke: var(--logo-color);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 22 12 3 12;
+  animation: spin 14s linear infinite;
+  animation-play-state: paused;
+}
+
+.blob {
+  fill: var(--logo-color);
+}
+
+.main {
+  transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.letter {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 17;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 0;
+}
+
+/* ===== لما تحط الماوس ===== */
+.root:hover .back,
+.root:hover .ringOutline,
+.root:hover .ringCircle {
+  animation-play-state: running;
+}
+
+.root:hover .main {
+  transform: scale(1.05);
+}
+
+.root:hover .letter {
+  animation: draw 900ms ease;
+}
+
+/* ===== وقت التحميل ===== */
+.loading .back,
+.loading .ringOutline,
+.loading .ringCircle {
+  animation-play-state: running;
+}
+
+.loading .back { animation-duration: 4s; }
+.loading .ringOutline { animation-duration: 2.4s; }
+.loading .ringCircle { animation-duration: 1.6s; }
+
+.loading .letterWrap {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* ===== الحركات ===== */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes draw {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(0.9); }
+}
+
+/* لمين مفعّل تقليل الحركة: ما في لف */
+@media (prefers-reduced-motion: reduce) {
+  .back,
+  .ringOutline,
+  .ringCircle,
+  .letterWrap,
+  .root:hover .letter {
+    animation: none;
+  }
+
+  .main {
+    transition: none;
+  }
+}

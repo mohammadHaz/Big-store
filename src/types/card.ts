@@ -72,7 +72,7 @@ export interface CardFields {
 
 export type GetCardsHook = {
   data: Card[] | null
-  input: {}
+  input: Record<string, never>
   fetcherInput: { cartId?: string }
   swrState: { isEmpty: boolean }
 }
@@ -132,7 +132,20 @@ export type CustomerCardHandlers = {
 
 export type CustomerCardSchema = {
   endpoint: {
-    options: {}
+    options: Record<string, never>
     handlers: CustomerCardHandlers
   }
+}
+
+export interface CardProduct {
+  id: string
+  title: string
+  image: string
+  href: string
+  price: string
+  oldPrice?: string // السعر قبل الخصم
+  brand?: string
+  rating?: number // من 5
+  reviews?: string // مثلاً "1.6 ألف"
+  badge?: string // مثلاً "New" أو "-20%"
 }

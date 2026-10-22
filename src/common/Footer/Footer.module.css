@@ -1,0 +1,72 @@
+.root {
+  @apply border-t border-accent-2;
+}
+
+/* القسم العلوي */
+.top {
+  @apply flex flex-col gap-10 py-12 lg:flex-row lg:justify-between;
+}
+
+/* اللوغو */
+.brand {
+  @apply max-w-xs;
+}
+
+.logo {
+  @apply flex items-center gap-2 font-bold;
+}
+
+.logoIcon {
+  @apply rounded-full  ;
+}
+
+.logoText {
+  @apply text-lg;
+}
+
+/* السوشال */
+.socials {
+  @apply mt-5 flex gap-3;
+}
+
+.social {
+  @apply flex h-10 w-10 items-center justify-center rounded-full
+  border border-accent-2 text-accent-7
+  transition hover:border-accent-6 hover:text-primary;
+}
+
+.social > svg {
+  @apply transition-transform duration-75 ease-linear;
+}
+
+.social:hover > svg {
+  @apply scale-110;
+}
+
+/* أعمدة الروابط */
+.columns {
+  @apply grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:gap-x-16;
+}
+
+.columnTitle {
+  @apply mb-4 text-sm font-semibold text-primary;
+}
+
+.columnList {
+  @apply space-y-3;
+}
+
+.link {
+  @apply text-sm text-accent-6 transition hover:text-primary;
+}
+
+/* الشريط السفلي */
+.bottom {
+  @apply flex flex-col-reverse items-center gap-4
+  border-t border-accent-2 py-6 text-sm text-accent-6
+  md:flex-row md:justify-between;
+}
+
+.bottomInfo {
+  @apply flex items-center gap-6;
+}

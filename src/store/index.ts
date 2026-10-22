@@ -16,3 +16,8 @@ export {
 export {
  useWishlistStore
 } from "./wishlist/wishlist.store";
+
+
+export {
+ useCheckoutStore
+} from "./checkout/checkout.store";

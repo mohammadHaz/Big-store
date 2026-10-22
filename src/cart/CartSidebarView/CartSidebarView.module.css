@@ -1,0 +1,109 @@
+.root {
+  @apply flex min-h-full flex-col gap-8 bg-accent-1 px-4 pb-10 pt-2 sm:px-6;
+  animation: slideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* الكارت الأبيض */
+.card {
+  @apply rounded-3xl border border-accent-2 bg-accent-0 p-4 shadow-sm sm:p-6;
+}
+
+/* المتجر */
+.store {
+  @apply mb-5 flex items-center gap-3;
+}
+
+.storeLogo {
+  @apply flex h-11 w-11 items-center justify-center overflow-hidden rounded-full border border-accent-2;
+}
+
+.storeName {
+  @apply block font-semibold text-primary;
+}
+
+.storeMeta {
+  @apply block text-xs text-accent-5;
+}
+
+.error {
+  @apply mb-4 rounded-xl bg-red-50 px-3 py-2 text-sm text-red-600;
+}
+
+/* المنتجات */
+.list {
+  @apply flex flex-col gap-6;
+}
+
+.list > li {
+  animation: fadeUp 0.4s ease-out both;
+}
+.list > li:nth-child(1) { animation-delay: 0.12s; }
+.list > li:nth-child(2) { animation-delay: 0.18s; }
+.list > li:nth-child(3) { animation-delay: 0.24s; }
+.list > li:nth-child(4) { animation-delay: 0.3s; }
+.list > li:nth-child(n + 5) { animation-delay: 0.36s; }
+
+/* المجموع */
+.summary {
+  @apply mt-8 border-t border-accent-2 pt-5;
+}
+
+.subtotal {
+  @apply flex items-center justify-between text-base text-primary;
+}
+
+.subtotalPrice {
+  @apply text-lg font-bold;
+}
+
+.note {
+  @apply mt-1 text-xs text-accent-5;
+}
+
+.checkout {
+  @apply mt-5 flex h-14 w-full items-center justify-center rounded-full text-base font-semibold text-white transition-colors;
+  background: #5a31f4;
+}
+
+.checkout:hover {
+  background: #4a22e0;
+}
+
+/* السلة الفاضية */
+.emptyCard {
+  @apply flex flex-col items-center py-12 text-center;
+}
+
+.emptyIcon {
+  @apply mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-accent-1 text-primary;
+}
+
+.emptyTitle {
+  @apply text-xl font-bold text-primary;
+}
+
+.emptyText {
+  @apply mt-2 max-w-xs text-sm text-accent-5;
+}
+
+.pillButton {
+  @apply mt-6 inline-flex h-11 items-center rounded-full border border-accent-2 px-6 text-sm font-medium text-primary transition-colors hover:bg-accent-1;
+}
+
+/* الأنيميشن */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(48px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .list > li {
+    animation: none;
+  }
+}

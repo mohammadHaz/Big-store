@@ -55,7 +55,7 @@ export interface AddressFields {
 
 export type GetAddressesHook = {
   data: Address[] | null
-  input: {}
+  input: Record<string, never>
   fetcherInput: { cartId?: string }
   swrState: { isEmpty: boolean }
 }
@@ -116,7 +116,7 @@ export type CustomerAddressHandlers = {
 
 export type CustomerAddressSchema = {
   endpoint: {
-    options: {}
+    options: Record<string, never>
     handlers: CustomerAddressHandlers
   }
 }

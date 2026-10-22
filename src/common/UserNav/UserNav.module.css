@@ -1,0 +1,77 @@
+.root {
+  @apply relative flex items-center;
+}
+
+.list {
+  @apply flex flex-row items-center justify-items-end h-full;
+}
+
+.item {
+  @apply ml-6 flex items-center relative text-primary;
+}
+
+.item > button,
+.item > a  {
+  @apply cursor-pointer transition ease-in-out duration-100 outline-none text-primary;
+}
+
+.item > button:hover,
+.item > a:hover  {
+  @apply  transition scale-110 outline-none;
+}
+
+.item:first-child {
+  @apply ml-0;
+}
+
+.item:focus,
+.item:active {
+  @apply outline-none;
+}
+
+.bagCount {
+  @apply border border-accent-1 bg-secondary text-secondary absolute rounded-full right-3 top-3 flex items-center justify-center font-bold text-xs;
+  padding-left: 2.5px;
+  padding-right: 2.5px;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+}
+
+.avatarButton {
+  @apply inline-flex justify-center rounded-full;
+  
+}
+
+.mobileMenu {
+  @apply flex lg:hidden ml-6;
+}
+
+.mobileMenu > button {
+  /* was text-white on .mobileMenu itself: Button.module.css's base .root
+     sets `text-accent-0` directly on the <button>, which always wins over
+     a color merely inherited from this <li> — needs a same-specificity
+     rule targeting the button directly, same as .item > button below does
+     for the other nav icon buttons (Bag/Heart), which is why those never
+     had this problem. text-primary follows the theme instead of a
+     hardcoded color that was only ever visible in dark mode. */
+  @apply text-primary;
+}
+
+.avatarButton:focus,
+.mobileMenu:focus {
+  @apply outline-none;
+}
+
+.dropdownDesktop {
+  @apply hidden -z-10;
+}
+
+@media (min-width: 1024px) {
+.dropdownDesktop {
+  @apply hidden lg:block;
+}
+
+.dropdownMobile {
+  @apply lg:hidden;
+}
+}
